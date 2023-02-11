@@ -14,10 +14,15 @@
 body{
     height: 100vh;
 }
+button{
+    cursor: pointer;
+}
 /*HEADER*/
 
 nav{
     position:sticky;
+    top:0;
+    z-index: 1;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -45,7 +50,6 @@ nav>ul{
 nav>ul>li>a{
     background-color: var(--primary);
     padding: .5rem;
-    height: fit-content;
     text-decoration: none;
     color: var(--light);
     border-radius: 5px;
@@ -73,6 +77,65 @@ nav>ul>li>a:hover{
 /*MAIN*/
 main{
     min-height: 70vh;
+}
+.formSearch{
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 7vh;
+}
+.formSearch>fieldset{
+    border: none;
+    display: flex;
+    gap:.5em;
+}
+.formSearch>fieldset>label:hover, .formSearch>fieldset>input:hover{
+    cursor: pointer;
+    color: var(--primary)
+}
+.cards{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 2em;
+    gap: 2em;
+}
+.cards>section{
+    background-color: var(--terceary);
+    color: var(--light);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+    padding: 1em;
+    width: 20em;
+    height: 25em;
+}
+.cards>section>img{
+    height: 15em;
+    max-width: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+.priceCard{
+    width: 100%;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 1em;
+}
+.priceCard>button{
+    width: 50%;
+    height: 2em;
+    color: var(--light);
+    background-color: var(--primary);
+    border: none;
+    border-radius: 5px;
+}
+.priceCard>button:hover{
+    background-color: var(--secondary);
 }
 /*FOOTER*/
 footer{
