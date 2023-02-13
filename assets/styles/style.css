@@ -78,6 +78,7 @@ nav>ul>li>a:hover{
 main{
     min-height: 70vh;
 }
+    /*Buscador*/
 .formSearch{
     display:flex;
     justify-content: space-around;
@@ -93,6 +94,7 @@ main{
     cursor: pointer;
     color: var(--primary)
 }
+    /*Cards*/
 .cards{
     display: flex;
     flex-wrap: wrap;
@@ -136,6 +138,42 @@ main{
 }
 .priceCard>button:hover{
     background-color: var(--secondary);
+}
+    /*Form*/
+.contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 4rem;
+}
+.contact>fieldset, .contact>input[type="submit"]{
+    border: none;
+    width: 100%;
+    max-width: 40rem;
+}
+.contact>fieldset>*{
+    width: 100%;
+    display:block;
+    align-self: center;
+}
+.contact>fieldset>input{
+    height: 2em;
+}
+.contact>input[type="submit"]{
+    color: var(--light);
+    background-color: var(--primary);
+    height: 2rem;
+    font-size: 1.3rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.contact>input[type="submit"]:hover{
+    background-color: var(--terceary);
+}
+textarea{
+    resize:none;
 }
 /*FOOTER*/
 footer{
