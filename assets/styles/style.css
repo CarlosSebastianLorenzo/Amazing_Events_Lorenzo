@@ -175,6 +175,23 @@ main{
 textarea{
     resize:none;
 }
+    /*Table*/
+.table{
+    display: flex;
+    padding: 2rem;
+    justify-content: center;
+}
+tr:first-child>td{
+    background-color: var(--primary);
+    color: var(--light);
+    font-size: 1.5rem;
+    padding: .5rem;
+}
+td, th{
+    border: 2px solid var(--terceary);
+    height: 2rem;
+    padding: .5rem;
+}
 /*FOOTER*/
 footer{
     display: flex;
