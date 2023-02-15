@@ -12,24 +12,25 @@
     --terceary: #8c0143;
 }
 body{
-    height: 100vh;
+    min-height: 100vh;
 }
 button{
     cursor: pointer;
 }
 /*HEADER*/
-
-nav{
+header{
     position:sticky;
     top:0;
     z-index: 1;
+}
+nav{
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: var(--light);
     height: 7vh;
-    padding-right: 5rem;
-    padding-left: 5rem;
+    padding-right: 4rem;
+    padding-left: 4rem;
 }
 .logo>a>img{
     height: 3rem;
@@ -42,6 +43,11 @@ nav{
     scale: 1;
     transition: .5s;
 }
+    /*hamburguer*/
+.hamburguer, .fa-bars, .fa-xmark{
+    display:none;
+}
+    /*nav*/
 nav>ul{
     display: flex;
     gap: 1rem;
@@ -57,15 +63,21 @@ nav>ul>li>a{
 nav>ul>li>a:hover{
     background-color: var(--terceary);
 }
+/*MAIN*/
+main{
+    min-height: 83vh;
+}
+    /*Site*/
 .site{
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 13vh;
     background-color: var(--terceary);
-    padding-left: 5rem;
-    padding-right: 5rem;
+    padding-left: 4rem;
+    padding-right: 4rem;
     color: var(--light);
+    text-align: center;
 }
 .site>a>i{
     scale: 3;
@@ -74,20 +86,20 @@ nav>ul>li>a:hover{
 .site>a>i:hover{
     scale: 3.4;
 }
-/*MAIN*/
-main{
-    min-height: 70vh;
-}
-    /*Buscador*/
+    /*Search*/
 .formSearch{
     display:flex;
     justify-content: space-around;
     align-items: center;
-    height: 7vh;
+    flex-wrap: wrap;
+    min-height: 7vh;
+    padding: 2rem;
+    gap: 2em;
 }
 .formSearch>fieldset{
     border: none;
     display: flex;
+    flex-wrap: wrap;
     gap:.5em;
 }
 .formSearch>fieldset>label:hover, .formSearch>fieldset>input:hover{
@@ -100,7 +112,7 @@ main{
     flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: center;
-    padding: 2em;
+    padding: 1em 2em 2em 2em;
     gap: 2em;
 }
 .cards>section{
@@ -112,11 +124,11 @@ main{
     align-items: center;
     gap: 1em;
     padding: 1em;
-    width: 20em;
-    height: 25em;
+    width: 19em;
+    height: 21em;
 }
 .cards>section>img{
-    height: 15em;
+    height: 12em;
     max-width: 100%;
     object-fit: cover;
     border-radius: 5px;
@@ -146,12 +158,14 @@ main{
     align-items: center;
     justify-content: center;
     gap: 1rem;
-    padding: 4rem;
+    padding: 3rem;
 }
-.contact>fieldset, .contact>input[type="submit"]{
+.contact>fieldset{
     border: none;
     width: 100%;
     max-width: 40rem;
+    display: flex;
+    flex-direction: column;
 }
 .contact>fieldset>*{
     width: 100%;
@@ -161,15 +175,18 @@ main{
 .contact>fieldset>input{
     height: 2em;
 }
-.contact>input[type="submit"]{
+.contact>fieldset>input[type="submit"]{
     color: var(--light);
     background-color: var(--primary);
     height: 2rem;
     font-size: 1.3rem;
     border-radius: 5px;
     cursor: pointer;
+    width: 30%;
+    align-self: flex-end;
+    border: none;
 }
-.contact>input[type="submit"]:hover{
+.contact>fieldset>input[type="submit"]:hover{
     background-color: var(--terceary);
 }
 textarea{
@@ -181,6 +198,10 @@ textarea{
     padding: 2rem;
     justify-content: center;
 }
+table{
+    border-spacing: 0;
+    border-top: 2px solid var(--terceary);
+}
 tr:first-child>td{
     background-color: var(--primary);
     color: var(--light);
@@ -188,17 +209,21 @@ tr:first-child>td{
     padding: .5rem;
 }
 td, th{
-    border: 2px solid var(--terceary);
+    border-bottom: 2px solid var(--terceary);
+    border-right: 2px solid var(--terceary);
     height: 2rem;
     padding: .5rem;
+}
+td:first-child, th:first-child{
+    border-left: 2px solid var(--terceary);
 }
 /*FOOTER*/
 footer{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-right: 5rem;
-    padding-left: 5rem;
+    padding-right: 4rem;
+    padding-left: 4rem;
     height: 10vh;
     background-color: var(--terceary);
     color: var(--light);
@@ -206,10 +231,10 @@ footer{
 .redes{
     display:flex;
     justify-content: center;
-    gap: 3em;
+    gap: 2em;
 }
 .redes>a>i{
-    scale: 2.5;
+    scale: 2;
     border-radius: 50%;
     background-color: var(--primary);
     padding: .3em;
@@ -219,4 +244,68 @@ footer{
 .redes>a>i:hover{
     translate: 0 -.2em;
     filter: drop-shadow(-1px 2px var(--secondary));
+}
+
+@media screen and (max-width: 840px){
+    body{
+        overflow-x: hidden;
+    }
+    nav{
+        height: fit-content;
+        padding: 1em;
+        align-items: flex-start;
+    }
+    nav>ul{
+        flex-direction: column;
+        align-items: flex-end;
+        gap: .5em;
+        height: 100vh;
+        position: absolute;
+        top: 0;
+        right: -20em;
+        padding: 5em;
+        background-color: #ffffffe8;
+    }
+    nav>ul>li>a{
+        display: block;
+        width: 9em;
+        text-align: center;
+    }
+    .hamburguer{
+        position: fixed;
+        top: 2.5em;
+        right: 3em;
+        z-index: 2;
+        display: block;
+        scale: 5;
+        opacity: 0;
+        cursor: pointer;
+    }
+    .fa-bars, .fa-xmark{
+        position: fixed;
+        top: 2.5em;
+        right: 3em;
+        z-index: 1;
+        scale: 4;
+        display: block;
+        color: var(--secondary);
+        cursor: pointer;
+    }
+    .hamburguer:hover ~ .fa-bars, .hamburguer:hover ~ .fa-xmark{
+        color: var(--primary);
+    }
+    .hamburguer:checked ~ .fa-xmark, .hamburguer:not(checked) ~ .fa-bars{
+        opacity: 1;
+    }
+    .hamburguer:checked ~ .fa-bars, .hamburguer:not(checked) ~ .fa-xmark{
+        opacity: 0;
+    }
+    .hamburguer:checked ~ ul{
+        right: 0;
+        transition: 1s;
+    }
+    .hamburguer:not(checked) ~ ul{
+        right: -20em;
+        transition: 1s;
+    }
 }
