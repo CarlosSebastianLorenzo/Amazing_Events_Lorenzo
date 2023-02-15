@@ -46,6 +46,7 @@ nav{
     /*hamburguer*/
 .hamburguer, .fa-bars, .fa-xmark{
     display:none;
+    visibility: hidden;
 }
     /*nav*/
 nav>ul{
@@ -140,16 +141,47 @@ main{
     justify-content: space-between;
     padding-left: 1em;
 }
-.priceCard>button{
+.priceCard>a{
+    text-decoration: none;
     width: 50%;
+}
+.priceCard>a>button{
+    width: 100%;
     height: 2em;
     color: var(--light);
     background-color: var(--primary);
     border: none;
     border-radius: 5px;
 }
-.priceCard>button:hover{
+.priceCard>a>button:hover{
     background-color: var(--secondary);
+}
+    /*Card Details*/
+.cardDetails{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 1em 2em 2em 2em;
+    gap: 2em;
+}
+.cardDetails>div{
+    background-color: var(--terceary);
+    color: var(--light);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    padding: 1em;
+    width: fit-content;
+    height: 40em;
+}
+.cardDetails>div>img{
+    height: 100%;
+    width: 25em;
+    object-fit: cover;
+    border-radius: 5px;
+    max-width: 100%;
 }
     /*Form*/
 .contact {
@@ -246,7 +278,7 @@ footer{
     filter: drop-shadow(-1px 2px var(--secondary));
 }
 
-@media screen and (max-width: 840px){
+@media screen and (max-width: 1024px){
     body{
         overflow-x: hidden;
     }
@@ -256,6 +288,7 @@ footer{
         align-items: flex-start;
     }
     nav>ul{
+        visibility: hidden;
         flex-direction: column;
         align-items: flex-end;
         gap: .5em;
@@ -276,12 +309,14 @@ footer{
         top: 2.5em;
         right: 3em;
         z-index: 2;
+        visibility: visible;
         display: block;
         scale: 5;
         opacity: 0;
         cursor: pointer;
     }
     .fa-bars, .fa-xmark{
+        visibility: visible;
         position: fixed;
         top: 2.5em;
         right: 3em;
@@ -301,11 +336,17 @@ footer{
         opacity: 0;
     }
     .hamburguer:checked ~ ul{
+        visibility: visible;
         right: 0;
         transition: 1s;
     }
     .hamburguer:not(checked) ~ ul{
+        visibility: hidden;
         right: -20em;
         transition: 1s;
+    }
+    .cardDetails>div{
+        width: 90vw;
+        flex-direction: column;
     }
 }
