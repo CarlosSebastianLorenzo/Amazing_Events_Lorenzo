@@ -173,18 +173,17 @@ let data =
   ]
 }
 
-let cards = document.getElementById("cards");
+const cards = document.getElementById("cards");
+const template = document.getElementById("template").content;
+const fragment = document.createDocumentFragment();
 
 for (let i = 0; i < data.events.length; i++) {
-cards.insertAdjacentHTML('beforeend', `
-<section>
-<img src="`+ data.events[i].image +`">
-<h3>`+ data.events[i].name +`</h3>
-<h5>`+ data.events[i].description +`</h5>
-<div class="priceCard">
-    <p>Price $`+ data.events[i].price +`,00</p>
-    <a href="./pages/details.html"><button>See more</button></a>
-</div>
-</section>
-`);
+  template.querySelector('section img').setAttribute("src", data.events[i].image)
+  template.querySelector('section h3').textContent = data.events[i].name
+  template.querySelector('section h5').textContent = data.events[i].description
+  template.querySelector('section div p').textContent = `Price $${data.events[i].price},00`
+  const clone = template.cloneNode(true)
+  fragment.appendChild(clone)
 }
+
+cards.appendChild(fragment)
