@@ -136,6 +136,22 @@ main{
     object-fit: cover;
     border-radius: 5px;
 }
+.cards>section>.img{
+    height: 12em;
+    max-height: 53%;
+    width: 100%;
+    border-radius: 5px;
+    background-size: 105%;
+    background-position: center center;
+}
+.cards>section:hover>.img{
+    background-size: 140%;
+    transition: .5s;
+}
+.cards>section:not(hover)>.img{
+    background-size: 105%;
+    transition: .5s;
+}
 .priceCard{
     width: 100%;
     display:flex;
@@ -283,6 +299,18 @@ footer{
 .redes>a>i:hover{
     translate: 0 -.2em;
     filter: drop-shadow(-1px 2px var(--secondary));
+}
+
+@media screen and (max-device-width: 1024px){
+    nav>ul{
+        display: none;
+    }
+    .hamburguer:checked ~ ul{
+        display: flex;
+    }
+    .hamburguer:not(checked) ~ ul{
+        display: none;
+    }
 }
 
 @media screen and (max-width: 1024px){

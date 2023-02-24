@@ -177,7 +177,7 @@ const template = document.getElementById("template").content;
 const fragment = document.createDocumentFragment();
 
 for (let i = 0; i < data.events.length; i++) {
-  template.querySelector('section img').setAttribute("src", data.events[i].image)
+  template.querySelector('section span').style.backgroundImage = `url(${data.events[i].image})`
   template.querySelector('section h3').textContent = data.events[i].name
   template.querySelector('section h5').textContent = data.events[i].description
   template.querySelector('section div p').textContent = `Price $${data.events[i].price},00`
