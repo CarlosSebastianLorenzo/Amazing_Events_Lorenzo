@@ -129,13 +129,6 @@ main{
     width: 19em;
     height: 21em;
 }
-.cards>section>img{
-    height: 12em;
-    max-height: 53%;
-    width: 100%;
-    object-fit: cover;
-    border-radius: 5px;
-}
 .cards>section>.img{
     height: 12em;
     max-height: 53%;
@@ -204,7 +197,9 @@ main{
     width: 50%;
     display: flex;
     align-items: center;
+    text-align: center;
     flex-direction: column;
+    gap: 2em;
 }
     /*Form*/
 .contact {
