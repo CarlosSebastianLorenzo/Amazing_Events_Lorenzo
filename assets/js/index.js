@@ -195,3 +195,29 @@ function createCards(array, idTemplate, idDiv){
   document.getElementById(idTemplate).remove();
 }
 createCards(data, "template", "cards")
+
+//Funcion para los filtros de los Checkbox de Categorias de forma dinámica
+
+let arrayCategories = data.events.map(objeto => objeto = objeto.category)
+
+let arrayCategoriesWithOutDuplicated = arrayCategories.filter((item,index)=>{
+    return arrayCategories.indexOf(item) === index;
+  })
+
+const $filters = document.getElementById('filters');
+
+const fragment2 = document.createDocumentFragment();
+
+for (let category of arrayCategoriesWithOutDuplicated) {
+    let $label = document.createElement("label");
+    $label.textContent = category
+    $label.setAttribute("for",category)
+    let $input = document.createElement("input");
+    $input.setAttribute("type", "checkbox");
+    $input.setAttribute("name", category);
+    $input.setAttribute("id", category);
+    fragment2.appendChild($label)
+    fragment2.appendChild($input)
+}
+
+$filters.appendChild(fragment2)
