@@ -1,26 +1,27 @@
 import data from './data.js';
 
-//Funcion para crear las cards
-function createFutureCards(array, idTemplate, idDiv){
+const futureData = data.events.filter(e => e.date>=data.currentDate)
+//cuando se capturan elementos HTML se usa signo $
 
+//Funcion para crear las cards
+function createCards(array, idTemplate, idDiv){
+  
   const $cards = document.getElementById(idDiv);
   const $template = document.getElementById(idTemplate).content;
   const fragment = document.createDocumentFragment();
   $cards.textContent = "";
-
+  
   if (!array.length == 0){
     for (let i = 0; i < array.length; i++) {
-      if (array[i].date >= data.currentDate){
-        $template.querySelector('section').setAttribute('id', array[i].category)
-        $template.querySelector('section span').style.backgroundImage = `url(${array[i].image})`
-        $template.querySelector('section h3').textContent = array[i].name
-        $template.querySelector('section h5').textContent = array[i].description
-        $template.querySelector('section div p').textContent = `Price $${array[i].price},00`
-        $template.querySelector('section div a').style.display = "flex"
-        $template.querySelector('section div a').setAttribute('href',`/pages/details.html?id=${array[i]._id}`)
-        let clone = $template.cloneNode(true)
-        fragment.appendChild(clone)
-      }
+      $template.querySelector('section').setAttribute('id', array[i].category)
+      $template.querySelector('section span').style.backgroundImage = `url(${array[i].image})`
+      $template.querySelector('section h3').textContent = array[i].name
+      $template.querySelector('section h5').textContent = array[i].description
+      $template.querySelector('section div p').textContent = `Price $${array[i].price},00`
+      $template.querySelector('section div a').style.display = "flex"
+      $template.querySelector('section div a').setAttribute('href',`/pages/details.html?id=${array[i]._id}`)
+      let clone = $template.cloneNode(true)
+      fragment.appendChild(clone)
     }
   } else {
     let $section = document.createElement('section')
@@ -31,15 +32,15 @@ function createFutureCards(array, idTemplate, idDiv){
   }
 
   $cards.appendChild(fragment)
-  
+
 }
 
 //Llamamos la funcion cards cuando inicia la pagina
-createFutureCards(data.events, "template", "cards")
+createCards(futureData, "template", "cards")
 
-//Crear los Checkbox de Categorias de forma dinámica
+//Crear los Checkbox de Categorias de forma dinámica 
 
-let arrayCategories = data.events.map(e => e.category).reduce((acc, category)=>
+let arrayCategories = futureData.map(e => e.category).reduce((acc, category)=>
 {if (!acc.includes(category)){
   acc.push(category)
 }
@@ -65,30 +66,30 @@ for (let category of arrayCategories) {
 $filters.appendChild(fragment2)
 
 //Filtrar por categoría
-let filteredData = data.events
+let filteredData = futureData
 
-function filterByCategory(array, cat){
-  let dataFiltered = array.filter(e => cat.toLowerCase().includes(e.category.toLowerCase()))
+function filterByCategory(array, text){
+  let dataFiltered = array.filter(e => text.toLowerCase().includes(e.category.toLowerCase()))
   return dataFiltered
 }
 
 $filters.addEventListener("change", function(){
   let $checkbox = $filters.getElementsByTagName("input")
-  let arra = ""
-  // $search.value = ""
+  let text = ""
+   $search.value = ""
 
   for (let i = 0; i < $checkbox.length; i++) {
     if($checkbox[i].checked){
-      arra += $checkbox[i].id.toLocaleLowerCase()
+      text += $checkbox[i].id.toLocaleLowerCase()
     }
   }
-  if (!arra == ""){
-    filteredData = filterByCategory(data.events,arra)
+  if (!text == ""){
+    filteredData = filterByCategory(futureData,text)
   }
   else{
-    filteredData = data.events
+    filteredData = futureData
   }
-  createFutureCards(filteredData, "template", "cards")
+  createCards(filteredData, "template", "cards")
 })
 
 //Filtrar por palabra Clave
@@ -108,7 +109,7 @@ $search.addEventListener("keyup", function(e){
   filteredData2 = filteredData
   }
   filteredData2 = filterByWord(filteredData, $search.value)
-  createFutureCards(filteredData2, "template", "cards")
+  createCards(filteredData2, "template", "cards")
 })
 
 //Crear Cards Filtradas en Submit
@@ -117,5 +118,5 @@ const $formSearch = document.getElementById("formSearch");
 
 $formSearch.addEventListener("submit", function(e){
   e.preventDefault()
-  createFutureCards(filteredData2, "template", "cards")
+  createCards(filteredData2, "template", "cards")
 })

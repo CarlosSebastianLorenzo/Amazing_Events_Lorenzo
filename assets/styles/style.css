@@ -129,6 +129,17 @@ main{
     width: 19em;
     height: 21em;
 }
+.cards>section>*{
+    animation: vanish .5s ease-out;
+}
+
+@keyframes vanish {
+    from{
+        translate: 0px .2em;
+    }
+    to { translate: 0 0;
+    }
+}
 .cards>section>.img{
     height: 12em;
     max-height: 53%;

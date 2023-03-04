@@ -67,23 +67,23 @@ $filters.appendChild(fragment2)
 //Filtrar por categoría
 let filteredData = data.events
 
-function filterByCategory(array, strinG){
-  let dataFiltered = array.filter(e => strinG.toLowerCase().includes(e.category.toLowerCase()))
+function filterByCategory(array, text){
+  let dataFiltered = array.filter(e => text.toLowerCase().includes(e.category.toLowerCase()))
   return dataFiltered
 }
 
 $filters.addEventListener("change", function(){
   let $checkbox = $filters.getElementsByTagName("input")
-  let arra = ""
+  let text = ""
    $search.value = ""
 
   for (let i = 0; i < $checkbox.length; i++) {
     if($checkbox[i].checked){
-      arra += $checkbox[i].id.toLocaleLowerCase()
+      text += $checkbox[i].id.toLocaleLowerCase()
     }
   }
-  if (!arra == ""){
-    filteredData = filterByCategory(data.events,arra)
+  if (!text == ""){
+    filteredData = filterByCategory(data.events,text)
   }
   else{
     filteredData = data.events
@@ -120,7 +120,4 @@ $formSearch.addEventListener("submit", function(e){
   createCards(filteredData2, "template", "cards")
 })
 
-//una o dos funciones en filtro
-//que luego tengas una a parte que sea la de dibujar las tarjetas
-//checkbox crea conjunto
-//filtro crea otro conjunto
+export default createCards;
