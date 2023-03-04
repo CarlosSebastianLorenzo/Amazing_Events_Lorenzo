@@ -3,7 +3,6 @@ import data from './data.js';
 //cuando se capturan elementos HTML se usa signo $
 
 //Funcion para crear las cards
-
 function createCards(array, idTemplate, idDiv){
   
   const $cards = document.getElementById(idDiv);
@@ -19,6 +18,7 @@ function createCards(array, idTemplate, idDiv){
       $template.querySelector('section h5').textContent = array[i].description
       $template.querySelector('section div p').textContent = `Price $${array[i].price},00`
       $template.querySelector('section div a').style.display = "flex"
+      $template.querySelector('section div a').setAttribute('href',`/pages/details.html?id=${array[i]._id}`)
       let clone = $template.cloneNode(true)
       fragment.appendChild(clone)
     }
@@ -37,7 +37,7 @@ function createCards(array, idTemplate, idDiv){
 //Llamamos la funcion cards cuando inicia la pagina
 createCards(data.events, "template", "cards")
 
-//Crear los Checkbox de Categorias de forma dinámica
+//Crear los Checkbox de Categorias de forma dinámica 
 
 let arrayCategories = data.events.map(e => e.category).reduce((acc, category)=>
 {if (!acc.includes(category)){
@@ -67,15 +67,15 @@ $filters.appendChild(fragment2)
 //Filtrar por categoría
 let filteredData = data.events
 
-function filterByCategory(array, cat){
-  let dataFiltered = array.filter(e => cat.toLowerCase().includes(e.category.toLowerCase()))
+function filterByCategory(array, strinG){
+  let dataFiltered = array.filter(e => strinG.toLowerCase().includes(e.category.toLowerCase()))
   return dataFiltered
 }
 
 $filters.addEventListener("change", function(){
   let $checkbox = $filters.getElementsByTagName("input")
   let arra = ""
-  // $search.value = ""
+   $search.value = ""
 
   for (let i = 0; i < $checkbox.length; i++) {
     if($checkbox[i].checked){
@@ -119,3 +119,8 @@ $formSearch.addEventListener("submit", function(e){
   e.preventDefault()
   createCards(filteredData2, "template", "cards")
 })
+
+//una o dos funciones en filtro
+//que luego tengas una a parte que sea la de dibujar las tarjetas
+//checkbox crea conjunto
+//filtro crea otro conjunto
