@@ -59,8 +59,8 @@ for (let category of arrayCategories) {
     $input.setAttribute("type", "checkbox");
     $input.setAttribute("name", category);
     $input.setAttribute("id", category);
-    fragment2.appendChild($label)
     fragment2.appendChild($input)
+    fragment2.appendChild($label)
 }
 
 $filters.appendChild(fragment2)
