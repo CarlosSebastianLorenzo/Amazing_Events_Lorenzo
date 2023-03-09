@@ -11,6 +11,24 @@
     --secondary: gray;
     --terceary: #8c0143;
 }
+*::selection{
+    background-color: var(--secondary);
+    color: var(--light);
+}
+::-webkit-scrollbar{
+    width: .7em;
+}
+::-webkit-scrollbar-track{
+    background-color: var(--terceary);
+}
+::-webkit-scrollbar-thumb{
+    background: linear-gradient(180deg, var(--terceary), var(--primary) 20%, var(--primary) 80%, var(--terceary));
+    /* border: 2px solid var(--secondary); */
+    border-radius: 20px;
+}
+::-webkit-scrollbar-thumb:hover{
+    background: linear-gradient(180deg, var(--terceary), var(--primary) 20%, var(--terceary), var(--primary) 80%, var(--terceary));
+}
 body{
     min-height: 100vh;
 }
@@ -116,6 +134,7 @@ main{
     height: 1em;
     border: .5px solid var(--secondary);
     border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
 }
 .formSearch>fieldset>input:hover{
     cursor: pointer;
@@ -129,6 +148,9 @@ main{
 }
 .formSearch>fieldset>input:checked+label{
     color: var(--primary);
+}
+.formSearch>fieldset>input:checked+label:hover{
+    color: var(--dark);
 }
     /*Cards*/
 .cards{
@@ -151,16 +173,20 @@ main{
     padding: 1em;
     width: 19em;
     height: 21em;
-}
-.cards>section>*{
+    box-shadow:  0px 8px 16px rgba(0, 0, 0, 0.402);
     animation: vanish .5s ease-out;
 }
 
 @keyframes vanish {
-    from{
-        translate: 0px .2em;
+    from {
+        box-shadow:  0px 8px 16px rgba(0, 0, 0, 0.402);
+
     }
-    to { translate: 0 0;
+    50%{
+        box-shadow: 0px 8px 5px var(--primary);
+    }
+    to {
+        box-shadow:  0px 8px 16px rgba(0, 0, 0, 0.402);
     }
 }
 .cards>section>.img{
@@ -218,6 +244,7 @@ main{
     min-width: 50em;
     min-height: 75vh;
     height: 40em;
+    box-shadow:  0px 8px 16px rgba(0, 0, 0, 0.402);
 }
 .cardDetails>div>span{    
     height: 100%;
