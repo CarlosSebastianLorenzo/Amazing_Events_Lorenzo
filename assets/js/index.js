@@ -1,18 +1,32 @@
-import data from './data.js';
 import functions from './functions.js';
-let array = data.events
+let apiURL = 'assets/js/amazing.json';
+let array = []
+let arrayCategories = []
 
-//Llamamos la funcion cards cuando inicia la pagina
-functions.createCards(array, "template", "cards")
+async function fetchData(){
+  try{
+    const response = await fetch(apiURL);
+    const data = await response.json();
+    array = data.events;
 
-//Crear los Checkbox de Categorias de forma dinámica 
-let arrayCategories = functions.createCategories(array);
-const $filters = document.getElementById('filters');
-functions.createChecbox(arrayCategories, $filters)
+    //Llamamos la funcion cards cuando inicia la pagina
+    functions.createCards(array, "template", "cards");
+
+    //Crear los Checkbox de Categorias de forma dinámica 
+    arrayCategories = functions.createCategories(array);
+    functions.createChecbox(arrayCategories, $filters);
+  }
+  catch(error){
+    console.log(error);
+  }
+}
+fetchData();
 
 //Filtrar por categoría
 let filteredData = array
 let filteredData2 = filteredData
+
+const $filters = document.getElementById('filters');
 
 $filters.addEventListener("change", function(){
   let $checkbox = $filters.getElementsByTagName("input")
