@@ -71,5 +71,35 @@ function filterByWord(array, keyWord){
     return dataFiltered
 }
 
-let functions = {createCards, createCategories, createChecbox, filterByCategory, filterByWord} 
+//Funcion que crea un nuevo array que agrupa los elementos del array original por el primer elemento y suma los valores de los elementos correspondientes 
+function addyngByCategory(array){
+    let groupedArray = [];
+    let obj = {};
+
+    for (let i = 0; i < array.length; i++) {
+    let key = array[i][0];
+    let value1 = array[i][1];
+    let value2 = array[i][2];
+
+    if (obj[key]) {
+        obj[key][0] += value1;
+        obj[key][1] = ((obj[key][1]+ value2)/2);
+    } else {
+        obj[key] = [value1, value2];
+    }
+    }
+
+    for (let key in obj) {
+    let tempArr = [key];
+    tempArr.push(obj[key][0]);
+    tempArr.push((obj[key][1]).toFixed(2));
+    groupedArray.push(tempArr);
+    }
+
+    return groupedArray
+}
+
+//Nos devuelve que array es más largo, o al menos uno de los más largos
+
+let functions = {createCards, createCategories, createChecbox, filterByCategory, filterByWord, addyngByCategory} 
 export default functions;

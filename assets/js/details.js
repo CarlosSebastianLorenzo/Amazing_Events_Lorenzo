@@ -12,8 +12,18 @@ async function fetchData(){
     try{
         const response = await fetch(apiURL);
         const data = await response.json();
-        let array = data.events;
-        console.log(array);
+        let array = data.events.map(e => {
+            if (e.assistance){
+                return e
+            }
+            else {
+                return {
+                    ...e,
+                    assistance: e.estimate
+                }
+            }
+        });
+
         const card = array.find(card => card._id == id)
 
         $div.innerHTML = `
@@ -25,8 +35,8 @@ async function fetchData(){
                 <p>${card.description}</p>
                 <h3>Category:  ${card.category}</h3>
                 <h3>Place:  ${card.place}</h3>
-                <p>Capacity:  ${card.capacity}</p>
-                <p>Estimate:  ${card.estimate}</p>
+                <p>Capacity:  ${card.capacity.toLocaleString()}</p>
+                <p>Assistance or Estimate:  ${card.assistance.toLocaleString()}</p>
                 <p>Price:  $${card.price},00</p>
             </div>
             </div>

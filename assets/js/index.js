@@ -8,6 +8,8 @@ async function fetchData(){
     const response = await fetch(apiURL);
     const data = await response.json();
     array = data.events;
+    filteredData = array
+    filteredData2 = filteredData
 
     //Llamamos la funcion cards cuando inicia la pagina
     functions.createCards(array, "template", "cards");

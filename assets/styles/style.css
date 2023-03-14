@@ -40,12 +40,14 @@ header{
     position:sticky;
     top:0;
     z-index: 1;
+    background: linear-gradient(90deg, var(--light), var(--secondary));
+    box-shadow: 1px 0px 13px var(--terceary);
 }
 nav{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--light);
+  /*  background-color: var(--light);*/
     height: 7vh;
     padding-right: 4rem;
     padding-left: 4rem;
@@ -84,6 +86,7 @@ nav>ul>li>a:hover{
 }
 /*MAIN*/
 main{
+    background: radial-gradient(var(--light), var(--secondary));
     min-height: 83vh;
 }
     /*Site*/
@@ -174,10 +177,10 @@ main{
     width: 19em;
     height: 21em;
     box-shadow:  0px 8px 16px rgba(0, 0, 0, 0.402);
-    animation: vanish .5s ease-out;
+    animation: shine .5s ease-out;
 }
 
-@keyframes vanish {
+@keyframes shine {
     from {
         box-shadow:  0px 8px 16px rgba(0, 0, 0, 0.402);
 
@@ -195,6 +198,7 @@ main{
     width: 100%;
     border-radius: 5px;
     background-size: 105%;
+    background-repeat: no-repeat;
     background-position: center center;
 }
 .cards>section:hover>.img{
@@ -331,6 +335,7 @@ textarea{
     justify-content: center;
 }
 table{
+    max-width: 70em;
     border-spacing: 0;
     border-top: 2px solid var(--terceary);
 }
@@ -345,9 +350,30 @@ td, th{
     border-right: 2px solid var(--terceary);
     height: 2rem;
     padding: .5rem;
+    background-color: var(--light);
+}
+td{
+    text-align: center;
 }
 td:first-child, th:first-child{
     border-left: 2px solid var(--terceary);
+}
+.vanish{
+    animation:vanish 5s infinite;
+}
+@keyframes vanish {
+    from{
+        color: transparent;
+    }
+    20%{
+        color: black;
+    }
+    80%{
+        color: black;
+    }
+    to{
+        color: transparent;
+    }
 }
 /*FOOTER*/
 footer{
@@ -409,7 +435,7 @@ footer{
         top: 0;
         right: -20em;
         padding: 5em;
-        background-color: #ffffffe8;
+        background-color: #5e5d5dc4;
     }
     nav>ul>li>a{
         display: block;
@@ -435,11 +461,11 @@ footer{
         z-index: 1;
         scale: 4;
         display: block;
-        color: var(--secondary);
+        color: var(--primary);
         cursor: pointer;
     }
     .hamburguer:hover ~ .fa-bars, .hamburguer:hover ~ .fa-xmark{
-        color: var(--primary);
+        color: var(--terceary);
     }
     .hamburguer:checked ~ .fa-xmark, .hamburguer:not(checked) ~ .fa-bars{
         opacity: 1;
