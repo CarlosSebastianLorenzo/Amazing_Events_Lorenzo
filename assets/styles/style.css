@@ -388,21 +388,24 @@ td:first-child, th:first-child{
 }
 @keyframes spinner {
     from{
+        transform:rotateX(75deg) perspective(200px);
         filter:drop-shadow(-5px 12px 5px var(--terceary)) grayscale(80%) brightness(30%) hue-rotate(30deg);
         opacity: 0;
         scale: .1;
         translate: 0 5em;
     }
-    70%{
+    60%{
         opacity: 1;
         scale: 2;
         filter:drop-shadow(-8px 28px 15px var(--dark)) grayscale(20%) brightness(130%) hue-rotate(0deg);
+        transform:rotateY(-45deg) perspective(100px);
     }
     to{
         filter:drop-shadow(-8px 12px 5px var(--terceary)) grayscale(80%) brightness(30%) hue-rotate(-30deg);
         scale: 1.5;
         opacity: 0;
         translate: 0 -5em;
+        transform:rotateX(25deg) perspective(200px);
     }
 }
 /*FOOTER*/
