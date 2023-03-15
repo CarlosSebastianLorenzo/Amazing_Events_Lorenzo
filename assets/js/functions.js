@@ -99,7 +99,18 @@ function addyngByCategory(array){
     return groupedArray
 }
 
-//Nos devuelve que array es más largo, o al menos uno de los más largos
+// Función para mostrar el spinner
+const showSpinner = () => {
+    let $spinner = document.querySelector(".spinner");
+    $spinner.style.display = "block";
+};
 
-let functions = {createCards, createCategories, createChecbox, filterByCategory, filterByWord, addyngByCategory} 
+  // Función para ocultar el spinner
+const hideSpinner = () => {
+    let $spinner = document.querySelector(".spinner");
+    $spinner.style.display = "none";
+};
+
+
+let functions = {createCards, createCategories, createChecbox, filterByCategory, filterByWord, addyngByCategory, showSpinner, hideSpinner} 
 export default functions;

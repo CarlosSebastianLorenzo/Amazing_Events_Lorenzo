@@ -9,8 +9,12 @@ async function fetchData(){
     const data = await response.json();
     array = data.events.filter(e => e.date>=data.currentDate);
 
-    //Llamamos la funcion cards cuando inicia la pagina
-    functions.createCards(array, "template", "cards");
+    setTimeout(function(){
+      // Escondo el spinner antes de imprimir las cards
+      functions.hideSpinner(); 
+      //Llamamos la funcion cards cuando inicia la pagina
+      functions.createCards(array, "template", "cards");
+    },1800);
 
     //Crear los Checkbox de Categorias de forma dinámica 
     arrayCategories = functions.createCategories(array);
@@ -20,6 +24,11 @@ async function fetchData(){
     console.log(error);
   }
 }
+
+//Llamo a la función para activar spinner
+functions.showSpinner();
+
+// Llamo a la función para obtener los datos de la API
 fetchData();
 
 //Filtrar por categoría

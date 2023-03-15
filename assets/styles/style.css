@@ -375,6 +375,36 @@ td:first-child, th:first-child{
         color: transparent;
     }
 }
+/*SPINNER*/
+.spinner{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+    scale: 2;
+    cursor: pointer;
+    rotate: 5deg;
+    animation: spinner 2s infinite;
+}
+@keyframes spinner {
+    from{
+        filter:drop-shadow(-5px 12px 5px var(--terceary)) grayscale(80%) brightness(30%) hue-rotate(30deg);
+        opacity: 0;
+        scale: .1;
+        translate: 0 5em;
+    }
+    70%{
+        opacity: 1;
+        scale: 2;
+        filter:drop-shadow(-8px 28px 15px var(--dark)) grayscale(20%) brightness(130%) hue-rotate(0deg);
+    }
+    to{
+        filter:drop-shadow(-8px 12px 5px var(--terceary)) grayscale(80%) brightness(30%) hue-rotate(-30deg);
+        scale: 1.5;
+        opacity: 0;
+        translate: 0 -5em;
+    }
+}
 /*FOOTER*/
 footer{
     display: flex;
@@ -413,6 +443,9 @@ footer{
     }
     .hamburguer:not(checked) ~ ul{
         display: none;
+    }
+    .spinner{
+        left: 45%;
     }
 }
 
@@ -509,4 +542,7 @@ footer{
     .cardDetails>div>div>h1{
         font-size: 2.5em;
     }
+
+    
 }
+
